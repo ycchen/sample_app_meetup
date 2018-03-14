@@ -49,6 +49,9 @@ rails g scaffold Membership group:references user:references role:references
 * Project setup
 
 ```ruby
+# clone project and bundle install
+bundle install
+
 # create database and db migration 
 rails db:create db:migrate
 
