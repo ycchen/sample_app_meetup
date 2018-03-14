@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Groups</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Organizer(s)</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.name %></td>
+        <td><%= group.memberships.where(role_id: Role.find_by_name('Organizer').id).map{|m| m.user.full_name}.join(",") %></td>
+        <td><%= link_to 'Show', group, class: 'btn btn-outline-primary'%></td>
+        <td><%= link_to 'Edit', edit_group_path(group), class: 'btn btn-outline-primary' %></td>
+        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Group', new_group_path , class: 'btn btn-outline-primary'%>

@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group Name:</strong>
+  <%= @group.name %>
+</p>
+
+<table class="table">
+	<thead class="thead-dark">
+	<tr><th>Member Name</th><th>Role</th></tr>
+	</thead>
+	<% @group.memberships.each do |member|%>
+		<tr><td><%= member.user.first_name%> <%=member.user.last_name%></td><td><%= member.role.name%></td></tr>
+	<% end %>
+
+</table>
+<%= link_to 'Edit', edit_group_path(@group), class: 'btn btn-primary' %> |
+<%= link_to 'Back', groups_path, class: 'btn btn-primary' %>
