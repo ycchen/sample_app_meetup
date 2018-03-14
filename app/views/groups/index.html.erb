@@ -15,7 +15,7 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= group.memberships.where(role_id: Role.find_by_name('Organizer').id).map{|m| m.user.full_name}.join(",") %></td>
+        <td><%= group.group_organizers %></td>
         <td><%= link_to 'Show', group, class: 'btn btn-outline-primary'%></td>
         <td><%= link_to 'Edit', edit_group_path(group), class: 'btn btn-outline-primary' %></td>
         <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %></td>
